@@ -1,12 +1,14 @@
 #![no_std]
 
 #![cfg_attr(test, no_main)]
+#![feature(abi_x86_interrupt)]
 #![feature(custom_test_frameworks)]
 #![test_runner(crate::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
 pub mod serial;
 pub mod vga_buffer;
+mod interrupts;
 
 use core::panic::PanicInfo;
 
@@ -56,10 +58,15 @@ pub fn test_panic_handler(info: &PanicInfo) -> ! {
     loop {}
 }
 
+pub fn init() {
+    interrupts::init_idt();
+}
+
 /// Entry point for `cargo test`
 #[cfg(test)]
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
+    init();
     test_main();
     loop {}
 }
