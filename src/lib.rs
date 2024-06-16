@@ -3,6 +3,7 @@
 #![feature(custom_test_frameworks)]
 #![feature(abi_x86_interrupt)]
 #![test_runner(crate::test_runner)]
+#![feature(const_mut_refs)]
 #![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
