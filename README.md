@@ -43,3 +43,6 @@ With QEMU, we can set an [ISA](https://en.wikipedia.org/wiki/Industry_Standard_A
 QEMU allows piping serial to stdin. In the kernel, we can use [16550 UART](https://en.wikipedia.org/wiki/16550_UART) to send serial data. The first serial interface address is at `0x03F8`. Using more arguments to QEMU's `test-args` (in Cargo.toml) we can redirect serial to stdout like this:  
 > `"-serial", "stdio"`
 
+
+## To be continued...
+
